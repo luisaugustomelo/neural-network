@@ -1,0 +1,16 @@
+{
+  "name": "nnc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Augusto Melo Rohten",
+  "license": "ISC",
+  "dependencies": {
+    "math": "0.0.3",
+    "mnist": "^1.0.5",
+    "synaptic": "^1.0.12"
+  }
+}
