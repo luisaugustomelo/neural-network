@@ -10,6 +10,19 @@ var Neuron = synaptic.Neuron,
 var norm = function(price, min, max){return (price - min)/(max - min);}
 var real = function(value, min, max){return value*(max - min) + min;}
 
+var euclidianIn = function(index, value){return index/Math.sqrt(value);}
+var euclidianOut = function(index, value){return index*Math.sqrt(value);}
+
+function euclidian(array, index, callback){
+    var i = 0;
+    //Faltou implementar para tuplas!!
+    array.forEach(function(value){
+        i += Math.pow(value,2);
+    })
+
+    return callback(index, i);
+}
+
 //Function for returning norm or real value used
 //Função utilizada para normalizar ou retornar ao valor real, ex: value(4.054, input, 0, norm)
 function value(price, param, index, callback){
@@ -83,6 +96,10 @@ var input =[[4.054, 1368],
 var output = [372.70,380.11,351.59,362.16,368.76,375.73,399.81,413.83,428.00,
 492.80,507.80,466.38,479.64,429.86,434.82,403.56,400.95];
 
+//console.log(euclidian(output, output[11], euclidianIn));;
+//console.log(euclidian(output, euclidian(output, output[11], euclidianIn), euclidianOut));
+
+
 var output1 = [], input1 = [];
 
 var trainingSet = []
@@ -113,6 +130,19 @@ myTrainer.train(trainingSet, {
 
 
 //Test
+
+//Scaling to unit length
+/*console.log(value(
+    myPerceptron.activate(
+        [value(3.254, input, 0, norm),
+         value(1368, input, 1, norm)
+        ]),
+        output,
+        null,
+        real)
+); //0*/
+
+//Rescaling
 console.log(value(
     myPerceptron.activate(
         [value(3.254, input, 0, norm),
